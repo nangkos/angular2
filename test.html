@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>간단한 계산기</title>
 </head>
 <script>
-  var testFunc = function (p_num1, p_num2, op) {
+  var testFunc = function (params) {
     this.a = 3;
-    var num1 = parseInt(p_num1);
-    var num2 = parseInt(p_num2);
-    var opSelector = op;
+    var num1 = parseInt(params["num1"]);
+    var num2 = parseInt(params["num2"]);
+    var opSelector = params.opt;
 
     this.printSome = function (some) {
       alert(some);
@@ -61,12 +61,18 @@
     var num2 = document.getElementById("num2");
     var op = document.getElementById("op");
     var result = document.getElementById("result");
-    var tf = new testFunc(num1.value, num2.value, op);
+
+    var params = {};
+    params['num1'] = num1.value;
+    params['num2'] = num2.value;
+    params['opt'] = op;
+    //var tf = new testFunc(num1.value, num2.value, op);
+    tf = new testFunc(params);
     result.value = tf.cal();
   }
 </script>
 <body>
-  <label>숫자1 : <input type="text" id="num1"></label>
+  <label>숫자1 : <input type="text" id="num1" size="5"></label>
   <select id="op">
     <option value="">선택</option>
     <option value="+">더하기</option>
@@ -74,7 +80,7 @@
     <option value="/">나누기</option>
     <option value="*">곱하기</option>
   </select>
-  <label>숫자2 : <input type="text" id="num2"></label>
+  <label>숫자2 : <input type="text" id="num2" size="5"></label>
   <input type="button" value="계산" onclick="f1()">
   <input type="text" id="result">
 </body>
