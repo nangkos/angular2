@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<script>
+  var testFunc = function () {
+    this.a = 3;
+    var b = 4;
+
+    this.printSome = function (some) {
+      alert(some);
+
+    }
+
+    this.add = function (num1, num2) {
+      num1 = parseInt(num1);
+      num2 = parseInt(num2);
+      //this.printSome(num1 + num2);
+
+      return num1 + num2;
+    }
+  }
+
+
+  function f1 () {
+    var tf = new testFunc();
+    var num1 = document.getElementById("num1");
+    var num2 = document.getElementById("num2");
+    var result = document.getElementById("result");
+    result.value = tf.add(num1.value, num2.value);
+  }
+</script>
+<body>
+  <label>숫자1 : <input type="text" id="num1"></label>
+  +
+  <label>숫자2 : <input type="text" id="num2"></label>
+  <input type="button" value="계산" onclick="f1()">
+  <input type="text" id="result">
+</body>
+</html>
