@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DOM</title>
+</head>
+<body>
+  <div id="test1" data-id="tt1"></div>
+  <div id="test2" data-id="tt2"></div>
+  <div id="test3" data-id="tt3"></div>
+  <div id="ttt" data-id="ttt"></div>
+</body>
+<script>
+
+/*   for (var i = 1; i <= 3; ++i) {
+    var divObj = document.getElementById('test' + i);
+    
+    divObj.innerHTML = (divObj.getAttribute('data-id'));
+  } */
+  var objs = document.getElementsByTagName('div');
+  for (var i = 0; i < objs.length; ++i) {
+    var obj = objs[i];
+    var str = '';
+    if (obj.id.indexOf('test') != -1) {
+      str += '<input type="text" id="ip' + i + '">';
+      obj.innerHTML = str;
+      document.getElementById('ip' + i).onclick = test;
+    }
+  }
+
+  function test() {
+    alert(1);
+  }
+
+</script>
+</html>

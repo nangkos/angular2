@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Javascript Html 만들기</title>
+</head>
+<script>
+  var cnt = 0;
+  function makeHtml() {
+    var divObj = document.getElementById('test');
+    var str = '<table border="1">';
+    for (var i = 2; i <= 9; ++i) {
+      str += '<tr>';
+      for (var j = 1; j <= 9; ++j) {
+        str += ('<td onclick="cl(this)">' + (i + ' x ' + j + ' = ') + (i * j) + '</td>');
+      }
+      str += '</tr>';
+    }
+    str += '</table>'
+    divObj.innerHTML = str;
+  }
+
+  function cl(obj) {
+    cnt += 1;
+    var text = obj.innerHTML;
+
+    if (!/\d+$/.test(text)) {
+      return;
+    }
+    var value = parseInt(text.substr(text.indexOf('=')).replace(/=\s/, ''), 10);
+    if (cnt == value) {
+      obj.innerHTML = '당첨';
+    }
+    else {
+      obj.innerHTML = '꽝';
+    }
+  }
+</script>
+<body onload="makeHtml()">
+  <h1>구구단</h1>
+  <div id="test">볼수 없음</div>
+</body>
+</html>
